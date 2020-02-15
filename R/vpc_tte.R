@@ -79,6 +79,10 @@ vpc_tte <- function(sim = NULL,
                     labeller = NULL,
                     verbose = FALSE,
                     vpcdb = FALSE) {
+  # temp added to prevent issue with failing vpc_tte test around no observations
+  if (is.null(obs)) {
+    stop("currently there is a bug in the code that prevents vpc_tte from working with NULL observations")
+  }
   if(is.null(obs) & is.null(sim)) {
     stop("At least a simulation or an observation dataset are required to create a plot!")
   }
